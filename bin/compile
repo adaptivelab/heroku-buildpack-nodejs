@@ -173,7 +173,6 @@ export CPPPATH="$INCLUDE_PATH"
 echo "-----> Installing dependencies with npm"
 run_npm "install --production"
 run_npm "rebuild"
-run_npm "install bower"
 echo "Dependencies installed" | indent
 
 echo "-----> Building runtime environment"
