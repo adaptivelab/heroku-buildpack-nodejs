@@ -158,15 +158,10 @@ package_download "npm" "${NPM_VERSION}" "${VENDORED_NPM}"
 package_download "scons" "${SCONS_VERSION}" "${VENDORED_SCONS}"
 
 # vendor node into the slug
-PATH="$BUILD_DIR/bin:$PATH"
+PATH="$VENDORED_NPM/bin:$BUILD_DIR/bin:$PATH"
 echo "-----> Vendoring node into slug"
 mkdir -p "$BUILD_DIR/bin"
 cp "$VENDORED_NODE/bin/node" "$BUILD_DIR/bin/node"
-ls "$VENDORED_NPM/bin"
-cp "$VENDORED_NPM/bin/npm" "$BUILD_DIR/bin/npm"
-mkdir -p "$BUILD_DIR/bin/node_modules/npm/bin"
-cp "$VENDORED_NPM/bin/npm-cli.js" "$BUILD_DIR/bin/node_modules/npm/bin/npm-cli.js"
-cp "$VENDORED_NPM/bin/read-package-json.js" "$BUILD_DIR/bin/node_modules/npm/bin/read-package-json.js"
 
 # setting up paths for building
 PATH="$VENDORED_SCONS:$VENDORED_NODE/bin:$PATH"
