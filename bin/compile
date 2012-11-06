@@ -162,7 +162,7 @@ PATH="$BUILD_DIR/bin:$PATH"
 echo "-----> Vendoring node into slug"
 mkdir -p "$BUILD_DIR/bin"
 cp "$VENDORED_NODE/bin/node" "$BUILD_DIR/bin/node"
-ls "$VENDORED_NODE/deps/npm/bin"
+ls "$VENDORED_NODE"
 echo "$VENDORED_NPM"
 cp "$VENDORED_NPM/bin/npm" "$BUILD_DIR/bin/npm"
 
