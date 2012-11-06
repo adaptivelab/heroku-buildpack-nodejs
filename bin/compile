@@ -163,7 +163,7 @@ echo "-----> Vendoring node into slug"
 mkdir -p "$BUILD_DIR/bin"
 cp "$VENDORED_NODE/bin/node" "$BUILD_DIR/bin/node"
 ls "$VENDORED_NPM/bin"
-cp "$VENDORED_NPM/bin/npm" "$BUILD_DIR/bin/npm"
+cp "$VENDORED_NPM/bin/*" "$BUILD_DIR/bin/"
 
 # setting up paths for building
 PATH="$VENDORED_SCONS:$VENDORED_NODE/bin:$PATH"
