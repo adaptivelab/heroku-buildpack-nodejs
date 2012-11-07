@@ -99,6 +99,22 @@ function package_download() {
   curl $package -s -o - | tar xzf - -C $location
 }
 
+function run_bower() {
+    pushd . > /dev/null
+    dir=$(dirname ${1})
+    cd ${dir}
+    bower install
+    popd > /dev/null
+}
+
+function prepare_bower_components() {
+  COM_FILES=$(find . -name component.json | awk '$1 !~ /node_modules/ {print}') 
+	for f in $COM_FILES 
+	do
+		run_bower $f
+	done
+}
+
 bootstrap_node=$(mktmpdir bootstrap_node)
 package_download "nodejs" "0.8.12" $bootstrap_node
 
@@ -176,6 +192,8 @@ run_npm "install npm"
 run_npm "rebuild"
 echo "run local npm to install bower"
 $BUILD_DIR/node_modules/.bin/npm install bower
+# install front-end dependencies with bower
+prepare_bower_components
 echo "Dependencies installed" | indent
 
 echo "-----> Building runtime environment"
