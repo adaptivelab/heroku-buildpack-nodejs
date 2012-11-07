@@ -108,11 +108,11 @@ function run_bower() {
 }
 
 function prepare_bower_components() {
-  COM_FILES=$(find . -name component.json | awk '$1 !~ /node_modules/ {print}') 
-	for f in $COM_FILES 
-	do
-		run_bower $f
-	done
+  COM_FILES=$(find . -name component.json | awk '$1 !~ /node_modules/ && $1 !~ /components/ {print}') 
+  for f in $COM_FILES 
+  do
+    run_bower $f
+  done
 }
 
 bootstrap_node=$(mktmpdir bootstrap_node)
