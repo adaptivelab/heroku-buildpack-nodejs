@@ -103,7 +103,7 @@ function run_bower() {
     pushd . > /dev/null
     dir=$(dirname ${1})
     cd ${dir}
-    bower install
+    $BUILD_DIR/node_modules/.bin/bower install
     popd > /dev/null
 }
 
