@@ -116,7 +116,7 @@ function build_assets() {
 }
 
 function prepare_bower_components() {
-  COM_FILES=$(find . -name component.json | awk '$1 !~ /node_modules/ && $1 !~ /components/ {print}') 
+  COM_FILES=$(find . -name bower.json | awk '$1 !~ /node_modules/ && $1 !~ /components/ {print}') 
   for f in $COM_FILES 
   do
     run_bower $f
