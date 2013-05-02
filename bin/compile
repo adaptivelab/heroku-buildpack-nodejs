@@ -107,11 +107,11 @@ function run_bower() {
     popd > /dev/null
 }
 
-function build_assets() {
+function make_assets() {
     pushd . > /dev/null
     dir=$(dirname ${1})
     cd ${dir}
-    $BUILD_DIR/make
+    /usr/bin/env make
     popd > /dev/null
 }
 
@@ -204,7 +204,7 @@ $BUILD_DIR/node_modules/.bin/npm install bower
 prepare_bower_components
 echo "Dependencies installed" | indent
 
-build_assets
+make_assets
 echo "Assets built"
 
 echo "-----> Building runtime environment"
