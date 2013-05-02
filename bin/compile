@@ -109,8 +109,7 @@ function run_bower() {
 
 function make_assets() {
     pushd . > /dev/null
-    dir=$(dirname ${1})
-    cd ${dir}
+    cd $BUILD_DIR
     /usr/bin/env make
     popd > /dev/null
 }
